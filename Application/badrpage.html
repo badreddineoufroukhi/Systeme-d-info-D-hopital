@@ -1,0 +1,30 @@
+<!doctype php>
+<html>
+<head>
+	 <link rel="stylesheet"  href="menu.css">
+	 </head>
+<body>
+
+<?php
+if(isset($_POST['email']))  
+{
+$c=$_POST['email'];
+$e=$_POST['password'];
+$f=$_POST['publication'];
+
+echo "<br/>";
+@mysql_connect("localhost","root","");
+@mysql_select_db("projet");
+$d=mysql_query("INSERT INTO `cmd`(`num_cmd`, `email`, `passw`, `publication`) VALUES (NULL,'$c','$e','$f');") or die('Erre');
+echo "<br/>";
+
+echo "<br/>";
+if(!$d) echo"erreur";
+else header("location:badr.php");
+}
+else echo"erreur";
+?>
+
+
+</body>
+</html>
